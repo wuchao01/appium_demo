@@ -1,4 +1,5 @@
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -34,9 +35,9 @@ public class AppiumDemo {
         //处理首页广告，通过显示等待信封图标绕过广告倒计时
         wait = new WebDriverWait(driver,5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.xueqiu.android:id/action_message")));
-        driver.findElementById("com.xueqiu.android:id/home_search").click();
-        driver.findElementById("com.xueqiu.android:id/search_input_text").sendKeys("alibaba");
-        driver.findElementByXPath("//*[@text='BABA']").click();
-        System.out.println(driver.findElementById("com.xueqiu.android:id/current_price").getText());
+        driver.findElement(MobileBy.id("com.xueqiu.android:id/home_search")).click();
+        driver.findElement(MobileBy.id("com.xueqiu.android:id/search_input_text")).sendKeys("alibaba");
+        driver.findElement(MobileBy.id("//*[@text='BABA']")).click();
+        System.out.println(driver.findElement(MobileBy.id("com.xueqiu.android:id/current_price")).getText());
     }
 }
