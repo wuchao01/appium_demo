@@ -1,13 +1,14 @@
 package pages;
 
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class MainPage extends BasePage{
 
@@ -24,9 +25,9 @@ public class MainPage extends BasePage{
         capabilities.setCapability("appPackage","com.tencent.wework");
         capabilities.setCapability("appActivity",".launch.LaunchSplashActivity");
         driver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"),capabilities);
-        wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy.id("com.tencent.wework:id/anx")));
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver,10,1000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.tencent.wework:id/i6n")));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     public void tearDown(){
@@ -34,7 +35,7 @@ public class MainPage extends BasePage{
     }
 
     public MemberPage member() {
-        click((MobileBy) MobileBy.id("com.tencent.wework:id/egd"));
+        click(By.xpath("//*[@text='通讯录']"));
         return new MemberPage(driver,wait);
     }
 

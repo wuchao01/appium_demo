@@ -1,7 +1,7 @@
 package pages;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MemberPage extends BasePage{
@@ -11,20 +11,48 @@ public class MemberPage extends BasePage{
     }
 
     public MemberPage addMember(String name, String mobile){
-        click((MobileBy) MobileBy.linkText("添加成员"));
-        click((MobileBy) MobileBy.linkText("手动输入添加"));
-        sendKeys((MobileBy) MobileBy.id("com.tencent.wework:id/b4t"),"小吴");
-        click((MobileBy) MobileBy.linkText("设置部门"));
-        click((MobileBy) MobileBy.id("com.tencent.wework:id/gsi"));
-        click((MobileBy) MobileBy.id("com.tencent.wework:id/gsh"));
-        click((MobileBy) MobileBy.linkText("保存"));
-        balk((MobileBy) MobileBy.id("com.tencent.wework:id/i63"));
+        click(By.xpath("//*[@text='添加成员']"));
+        click(By.id("com.tencent.wework:id/cox"));
+        sendKeys(By.id("com.tencent.wework:id/b4t"),name);
+        sendKeys(By.id("com.tencent.wework:id/fow"),mobile);
+        click(By.xpath("//*[@text='设置部门']"));
+        //这里还没找到元素
+        click(By.id("com.tencent.wework:id/e3v"));
+        click(By.id("com.tencent.wework:id/gsh"));
+        click(By.id("com.tencent.wework:id/fco"));
+        click(By.xpath("//*[@text='保存']"));
+        back(By.id("com.tencent.wework:id/i63"));
+        return this;
+//        driver.findElement(MobileBy.linkText("添加成员"));
+    }
+
+    public MemberPage updateMember(String updateName, String nickName, String updateMobile){
+        //这里还没找到元素
+        click(By.xpath("//*[@text='小吴']"));
+        click(By.id("com.tencent.wework:id/i6d"));
+        click(By.xpath("//*[@text='编辑成员']"));
+        sendKeys(By.xpath("//*[@text='小吴']"),updateName);
+        sendKeys(By.xpath("//*[@text='XiaoWu']"),nickName);
+        click(By.xpath("//*[@text='设置部门']"));
+        click(By.id("com.tencent.wework:id/e3v"));
+        click(By.id("com.tencent.wework:id/gsh"));
+        click(By.xpath("//*[@text='保存']"));
+        return this;
+    }
+
+    public MemberPage deleteMember(){
+        //这里还没找到元素
+        click(By.id("com.tencent.wework:id/i6d"));
+        click(By.xpath("//*[@text='编辑成员']"));
+        //这里应该在加一句下滑后删除
+        click(By.xpath("//*[@text='删除成员']"));
+        click(By.xpath("//*[@text='确定']"));
         return this;
 //        driver.findElement(MobileBy.linkText("添加成员"));
     }
 
     public String getContactInfo(){
-        return driver.findElement(MobileBy.linkText("企业通讯录")).getText();
+        return driver.findElement(By.xpath("//*[@text='企业通讯录']")).getText();
     }
 
 }

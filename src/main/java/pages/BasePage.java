@@ -1,7 +1,7 @@
 package pages;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
@@ -17,15 +17,16 @@ public class BasePage {
     }
 
 
-    public void click(MobileBy by){
+    public void click(By by){
         driver.findElement(by).click();
     }
 
-    public void sendKeys(MobileBy by,String content){
+    public void sendKeys(By by,String content){
+        driver.findElement(by).clear();
         driver.findElement(by).sendKeys(content);
     }
 
-    public void balk(MobileBy by){
+    public void back(By by){
         driver.findElement(by).click();
     }
 
