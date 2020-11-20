@@ -4,6 +4,8 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static java.lang.Thread.sleep;
+
 public class MemberPage extends BasePage{
 
     public MemberPage(AppiumDriver driver, WebDriverWait wait) {
@@ -17,22 +19,23 @@ public class MemberPage extends BasePage{
         sendKeys(By.id("com.tencent.wework:id/fow"),mobile);
         click(By.xpath("//*[@text='设置部门']"));
         //这里还没找到元素
-        click(By.id("com.tencent.wework:id/e3v"));
+        click(By.xpath("(//*[@resource-id='com.tencent.wework:id/gsi'])[2]"));
         click(By.id("com.tencent.wework:id/gsh"));
         click(By.id("com.tencent.wework:id/fco"));
         click(By.xpath("//*[@text='保存']"));
-        back(By.id("com.tencent.wework:id/i63"));
+        //返回元素不知道为啥没找到
+        driver.navigate().back();
+//        back(By.id("com.tencent.wework:id/i63"));
         return this;
-//        driver.findElement(MobileBy.linkText("添加成员"));
     }
 
-    public MemberPage updateMember(String updateName, String nickName, String updateMobile){
+    public MemberPage updateMember(String updateName,String updateMobile){
         //这里还没找到元素
-        click(By.xpath("//*[@text='小吴']"));
+        click(By.xpath("//*[@text='小天']"));
         click(By.id("com.tencent.wework:id/i6d"));
         click(By.xpath("//*[@text='编辑成员']"));
         sendKeys(By.xpath("//*[@text='小吴']"),updateName);
-        sendKeys(By.xpath("//*[@text='XiaoWu']"),nickName);
+        sendKeys(By.xpath("//*[@text='XiaoWu']"),updateMobile);
         click(By.xpath("//*[@text='设置部门']"));
         click(By.id("com.tencent.wework:id/e3v"));
         click(By.id("com.tencent.wework:id/gsh"));

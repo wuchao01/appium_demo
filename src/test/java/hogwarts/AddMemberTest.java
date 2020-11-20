@@ -21,14 +21,17 @@ public class AddMemberTest {
 
     @ParameterizedTest
     @MethodSource("getMemberInfo")
-    public void addMember(String name,String mobile,String updateName,String nickName,String updateMobile){
-        main.member().addMember(name,mobile).updateMember(updateName,nickName,updateMobile).deleteMember();
+//    public void addMember(String name,String mobile){
+    public void addMember(String name,String mobile,String updateName,String updateMobile){
+        main.member().addMember(name,mobile).updateMember(updateName,updateMobile);
         String text = main.member().getContactInfo();
         System.out.println("通讯录页面:" + text);
         assertTrue(text.contains("企业通讯录"));
     }
 
-    public static Stream<Arguments> getMemberInfo(){
-        return Stream.of(Arguments.of("小天","13711122341"),Arguments.of("小超","13811122345"));
+    public static Stream getMemberInfo(){
+        return Stream.of(
+                Arguments.of("小天","13711122341"),
+                Arguments.of("小超","13811122345"));
     }
 }

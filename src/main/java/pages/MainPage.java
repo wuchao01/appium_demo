@@ -20,10 +20,11 @@ public class MainPage extends BasePage{
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName","android");
         capabilities.setCapability("deviceName","mumu");
-        capabilities.setCapability("udid","emulator-5554");
+        capabilities.setCapability("udid","127.0.0.1:7555");
         capabilities.setCapability("noReset","true");
         capabilities.setCapability("appPackage","com.tencent.wework");
         capabilities.setCapability("appActivity",".launch.LaunchSplashActivity");
+        //win连接地址
         driver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"),capabilities);
         wait = new WebDriverWait(driver,10,1000);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.tencent.wework:id/i6n")));
