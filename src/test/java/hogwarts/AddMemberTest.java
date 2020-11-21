@@ -40,9 +40,6 @@ public class AddMemberTest {
     @Order(2)
     public void updateMember(String updateName,String updateMobile){
         main.member().updateMember(updateName,updateMobile);
-        String text = main.member().getContactInfo();
-        System.out.println("通讯录页面:" + text);
-        assertTrue(text.contains("企业通讯录"));
     }
 
     @ParameterizedTest
@@ -51,8 +48,6 @@ public class AddMemberTest {
     public void deleteMember(String deleteName){
         main.member().deleteMember(deleteName);
         String text = main.member().getContactInfo();
-        System.out.println("通讯录页面:" + text);
-        assertTrue(text.contains("企业通讯录"));
     }
 
     public static Stream getMemberInfo(){
