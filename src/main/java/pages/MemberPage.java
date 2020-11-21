@@ -41,6 +41,7 @@ public class MemberPage extends BasePage{
         click(By.xpath("(//*[@resource-id='com.tencent.wework:id/gsi'])[2]"));
         click(By.id("com.tencent.wework:id/gsh"));
         click(By.xpath("//*[@text='保存']"));
+        click(By.xpath("//*[@text='确定']"));
         return this;
     }
 
